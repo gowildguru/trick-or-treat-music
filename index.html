@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trick-or-Treat Music Street</title><link rel="stylesheet" href="style.css"></head>
+<body><header><div class="brand">🎃 Trick-or-Treat <span>Music Street</span></div><div class="toolbar"><label for="grade">Class</label><select id="grade"><option value="k2">K–2</option><option value="35">Grades 3–5</option></select><button id="reset" class="small">Reset visits</button><button id="sound" class="small" aria-pressed="true">🔊 Sounds on</button></div></header>
+<main><section id="street" aria-label="Halloween neighborhood"><div class="moon"></div><div class="stars">✦　✧　　 ✦　　　 ✧　　 ✦</div><div class="intro"><h1>Which door will you knock on?</h1><p>Choose a house. Will it be a TRICK or a TREAT?</p><div id="progress" aria-live="polite"></div></div><div id="houses" class="houses"></div><div class="road"><span>🍂</span><span>🦇</span><span>🍬</span><span>🍁</span></div></section>
+<section id="activity" hidden><button id="back">← Back to the street</button><div id="activityBody"></div></section></main>
+<footer>Made for classroom music • Videos require school-network access • Teacher controls the activity</footer>
+<script src="activities.js"></script><script src="app.js"></script></body></html>
