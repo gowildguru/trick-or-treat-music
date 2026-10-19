@@ -25,11 +25,49 @@ function chooseClass(id,manual=false){selectedId=id;manualOverride=manual;classS
 function updateWelcome(){const c=currentClass(),now=denverNow(),next=upcomingClass(now);$('#welcomeTitle').textContent=c?`Welcome, ${gradeName(c.grade)}!`:'Welcome to Music Street!';$('#welcomeClass').textContent=c?`${c.teacher}'s Class`:'Choose your class to begin';$('#welcomeTime').textContent=c?`${pretty(c.start)}–${pretty(c.end)}${c.grade===0?' · Gym dismissal at 3:15 PM':''}`:'';$('#enter').disabled=!c;$('#nextClass').textContent=next&&next.id!==selectedId?`Coming up: ${classLabel(next)} at ${pretty(next.start)}`:''}
 function showWelcome(){entered=false;activity.hidden=true;street.hidden=true;welcome.hidden=false;updateWelcome();window.scrollTo(0,0)}
 function enterStreet(){if(!currentClass())return;entered=true;welcome.hidden=true;activity.hidden=true;street.hidden=false;draw();beep(520);setTimeout(()=>beep(690),140);window.scrollTo(0,0)}
-function draw(){let visited=getVisited();$('#progress').textContent=`🍬 ${visited.length} of 10 houses visited`;houses.innerHTML='';DOORS.forEach((d,i)=>{let b=document.createElement('button');b.className='house'+(visited.includes(i)?' visited':'');b.style.setProperty('--roof',['#62407a','#4e587b','#80506b','#87623e','#496b73'][i%5]);b.style.setProperty('--wall',['#9c6888','#7b7ca1','#b77b70','#b58a65','#71999b'][i%5]);b.setAttribute('aria-label',`Door ${i+1}: ${d.name}${visited.includes(i)?', visited':''}`);b.innerHTML=`<div class="roof"></div><div class="building"><div class="window"></div><div class="window right"></div><div class="door">●</div></div><div class="house-name">${d.emoji} ${d.name}</div>`;b.onclick=()=>openDoor(i);houses.append(b)})}
+const HOUSE_DECOR=[
+  {roof:'#6d4769',wall:'#b9a67c',trim:'#e6cf95',symbol:'🧙',top:'☁️',side:'⚗️'},
+  {roof:'#6a596a',wall:'#c7b79d',trim:'#f1d9ae',symbol:'💀',top:'☠',side:'🦴'},
+  {roof:'#383852',wall:'#857d99',trim:'#b2a2c5',symbol:'🕸',top:'🦇',side:'🕯️'},
+  {roof:'#a65a32',wall:'#d68d4c',trim:'#ffd28a',symbol:'🎃',top:'🍃',side:'🎃'},
+  {roof:'#77728e',wall:'#d0c2cc',trim:'#f5e8df',symbol:'👻',top:'👻',side:'✨'},
+  {roof:'#8e534a',wall:'#e3c39a',trim:'#ffe5b7',symbol:'📖',top:'📚',side:'📜'},
+  {roof:'#596a5b',wall:'#9ba18c',trim:'#d2d6aa',symbol:'👹',top:'🔧',side:'⚙️'},
+  {roof:'#b05b6e',wall:'#f2c4a0',trim:'#fff0c2',symbol:'🍬',top:'🍭',side:'🍬'},
+  {roof:'#4d4b63',wall:'#817c86',trim:'#bbb0c1',symbol:'🦇',top:'🦇',side:'🪨'},
+  {roof:'#7b474f',wall:'#d7bb9e',trim:'#ffe2a8',symbol:'🐈‍⬛',top:'🐈‍⬛',side:'🐾'}
+];
+function draw(){
+  const visited=getVisited();$('#progress').textContent=`🍬 ${visited.length} of 10 houses visited`;
+  houses.replaceChildren();
+  DOORS.forEach((d,i)=>{
+    const theme=HOUSE_DECOR[i],b=document.createElement('button');
+    b.type='button';b.className=`house house-${i}${visited.includes(i)?' visited':''}`;
+    b.style.setProperty('--roof',theme.roof);b.style.setProperty('--wall',theme.wall);b.style.setProperty('--trim',theme.trim);
+    b.setAttribute('aria-label',`Enter ${d.name}${visited.includes(i)?', already visited':''}`);
+    b.innerHTML=`<span class="house-art" aria-hidden="true"><span class="house-top">${theme.top}</span><span class="roof"><span class="roof-emblem">${theme.symbol}</span></span><span class="building"><span class="house-detail">${theme.side}</span><span class="window"><span class="window-cross"></span></span><span class="window right"><span class="window-cross"></span></span><span class="doorway"><span class="door-glow"></span><span class="door"><span class="door-knob"></span></span></span></span><span class="house-ground"></span></span><span class="house-name">${d.name}${visited.includes(i)?' <span class="visited-mark">✓</span>':''}</span>`;
+    b.addEventListener('click',()=>openDoor(i,b));houses.append(b);
+  });
+}
+let enteringHouse=false;
+function portalTransition(button,done){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){done();return}
+  const door=button.querySelector('.door'),rect=door.getBoundingClientRect();
+  const cx=rect.left+rect.width/2,cy=rect.top+rect.height/2;
+  const overlay=document.createElement('div');overlay.className='house-portal';
+  overlay.style.setProperty('--portal-x',`${cx}px`);overlay.style.setProperty('--portal-y',`${cy}px`);
+  overlay.innerHTML='<span class="portal-swirl" aria-hidden="true">✦ ✧ ✦</span>';
+  document.body.append(overlay);button.classList.add('door-opening');
+  // First let the illustrated door swing open; then zoom into its glowing interior.
+  setTimeout(()=>overlay.classList.add('portal-grow'),390);
+  setTimeout(()=>{done();overlay.classList.add('portal-fade');},1100);
+  setTimeout(()=>{overlay.remove();button.classList.remove('door-opening');enteringHouse=false},1510);
+}
+
 function button(label,fn,primary=false){let b=document.createElement('button');b.className='action'+(primary?' primary':'');b.textContent=label;b.onclick=fn;return b}
 function append(parent,...children){children.forEach(x=>parent.append(x));return parent}
 function el(tag,cls='',content=''){let n=document.createElement(tag);n.className=cls;n.textContent=content;return n}
-function openDoor(i){active=i;step=0;beep(520);setTimeout(()=>beep(700),130);street.hidden=true;activity.hidden=false;window.scrollTo(0,0);renderActivity()}
+function openDoor(i,button){if(enteringHouse)return;enteringHouse=true;active=i;step=0;beep(520);setTimeout(()=>beep(700),180);portalTransition(button,()=>{street.hidden=true;activity.hidden=false;window.scrollTo(0,0);renderActivity()})}
 function renderActivity(){const d=DOORS[active],a=d[grade.value],body=$('#activityBody');body.replaceChildren();append(body,el('div','reveal '+a.type,a.type==='trick'?'🎭 TRICK!':'🍭 TREAT!'),el('h2','',a.title),el('p','instructions',a.description),el('div','note','For the substitute: '+a.prep));let content=el('div');body.append(content);
 if(a.kind==='video'||a.kind==='story'){if(a.kind==='story')renderStory(content,a);if(a.youtubeId){let f=document.createElement('iframe');f.className='video';f.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(a.youtubeId)}?rel=0`;f.title=a.title;f.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';f.allowFullscreen=true;content.append(f)}else content.append(el('div','video-placeholder','🎬 Video link not selected yet. Add a YouTube video ID in activities.js.'))}
 if(a.kind==='poison')renderPoison(content);if(a.kind==='rhythm')renderRhythm(content);if(a.kind==='soundtrack')renderSoundtrack(content);if(a.kind==='choice')renderChoice(content);
