@@ -163,6 +163,24 @@ footer strong {color:#ffcd71}
 @keyframes candy-spit {0%{transform:translateY(90px) scale(.65) rotate(-20deg);opacity:.4}65%{transform:translateY(-14px) rotate(8deg)}100%{transform:none;opacity:1}}
 @media(prefers-reduced-motion:reduce){.candy-wrapper.rejected{animation:none}}
 
+/* Candy factory: moving rollers, arriving wrappers, and open monster buckets. */
+.conveyor{position:relative;background-size:90px 100%;animation:factory-belt 1.3s linear infinite;border-top:12px solid #b9a3c2;border-bottom:12px solid #b9a3c2;box-shadow:inset 0 12px 15px #0005,inset 0 -10px 14px #0006,0 6px 0 #150d23}
+@keyframes factory-belt{to{background-position:90px 0}}
+.candy-enter{animation:candy-arrive .85s cubic-bezier(.2,.7,.3,1) both}
+@keyframes candy-arrive{from{transform:translateX(-480px) rotate(-12deg);opacity:0}to{transform:translateX(0);opacity:1}}
+.candy-wrapper.eaten{animation:none;transform:translateY(100px) scale(.15) rotate(30deg);opacity:0}
+.candy-wrapper.rejected{animation:candy-spit .6s ease-out}
+.monster-buckets{gap:1.2rem;padding-top:2.8rem;padding-bottom:.5rem;align-items:stretch}
+.monster-head{position:relative;border-radius:12px 12px 35px 35px!important;border:4px solid #cde499!important;border-top-width:10px!important;min-height:160px!important;margin:.6rem .2rem!important;justify-content:end;padding:18px 10px 12px!important;box-shadow:inset 12px 0 #fff1,inset -15px -15px #0003,0 7px #160f22}
+.monster-head::before{content:'';position:absolute;top:-20px;left:-7px;right:-7px;height:30px;border:5px solid #cde499;border-radius:50%;background:#100c1b;box-shadow:inset 0 6px 0 #0009;z-index:2;pointer-events:none}
+.monster-head::after{content:'';position:absolute;top:-48px;left:20%;width:60%;height:60px;border:5px solid #c0adcc;border-bottom:none;border-radius:55px 55px 0 0;z-index:0;pointer-events:none}
+.monster-head .monster-face{font-size:2.6rem;z-index:1;margin:.2rem 0}
+.bucket-mouth{position:absolute;top:-11px;left:12%;right:12%;height:12px;background:#050408;border-radius:50%;z-index:3;pointer-events:none}
+.chomp::before{animation:bucket-chomp .25s 3}.spit .bucket-mouth{background:#f3a3ae}
+@keyframes bucket-chomp{50%{transform:scaleY(.35)}}
+@media(max-width:600px){.monster-buckets{gap:.6rem}.monster-head{width:110px}.monster-head .monster-face{font-size:2rem}}
+@media(prefers-reduced-motion:reduce){.conveyor,.candy-enter,.chomp::before{animation:none}.candy-wrapper.eaten{transition:none}}
+
 </style>
 <style>
 .broom-soundboard a{color:#ffdf9b}.broom-controls{margin:1.4rem 0;padding:1.2rem;background:#281c3c;border:2px solid #b493c6;border-radius:18px}.broom-effects{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin:1rem 0}.broom-effect{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;min-height:170px;text-align:center;padding:1rem!important}.broom-effect span:not(.broom-icon),.broom-effect small{font-size:.85rem}.broom-icon{font-size:2.4rem}.broom-effect.suggested{outline:4px solid #ffce71;outline-offset:1px;background:#69476c;box-shadow:0 0 22px #ffc87555}.broom-cue{min-height:4rem;background:#3e2c53;border-left:5px solid #ffce71;padding:.8rem;border-radius:8px}.broom-status{min-height:1.5rem;color:#ffdf9b}.broom-controls input[type=range]{vertical-align:middle;max-width:180px}.broom-cue-table{width:100%;border-collapse:collapse;text-align:left;font-size:.9rem}.broom-cue-table th,.broom-cue-table td{padding:.6rem;border-bottom:1px solid #805e95}.broom-controls label{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}.broom-standalone{max-width:1000px;margin:1rem auto;padding:1rem 1.4rem}.broom-standalone h1{color:#ffdf9b}.broom-standalone header{padding:1rem}.broom-standalone .video{width:100%;aspect-ratio:16/9;min-height:240px}
@@ -172,6 +190,10 @@ footer strong {color:#ffcd71}
 <style>
 .g35-panel{margin:1.2rem 0;padding:1.1rem;border:2px solid #b797cd;border-radius:18px;background:#2a1e40;color:#fff5e4}.g35-panel .action{margin:.3rem;min-height:45px}.g35-panel h3{color:#ffdf9b}.g35-panel a,#activityBody a{color:#ffdf9b}.g35-review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.8rem;margin:1rem 0}.g35-review-card{text-align:center;border:1px solid #9475aa;border-radius:12px;padding:.8rem;background:#3c2b50}.g35-review-card h4{margin:.3rem 0}.g35-rhythm{color:#fff5e4;text-align:center;max-width:100%}.g35-rhythm svg{display:block;width:100%;height:90px;max-width:330px;margin:auto}.rhythm-speech{font-weight:800;color:#ffdf9b;margin-top:.3rem}.bones-count{font-size:2.5rem;font-weight:900;text-align:center;color:#ffdf9b}.bones-pattern{border-color:#d9c199}.g35-video-holder{margin:1.4rem 0}.g35-video-holder .video{width:100%;aspect-ratio:16/9;min-height:240px}.g35-timer{font-size:clamp(3rem,8vw,5rem);font-weight:900;color:#ffdf9b;text-align:center;font-variant-numeric:tabular-nums}.pumpkin-limit{border-color:#ffbd78;background:#4e2c3d}.timer-urgent{border-color:#ff8f75;box-shadow:0 0 18px #f7542b44}.g35-mansion-logo{display:block;max-width:150px;height:auto;background:white;padding:8px;border-radius:10px;margin:auto}.doom-buggies{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;margin:1rem 0}.doom-buggy{min-height:115px;border:3px solid #d5b7e1;border-radius:48% 48% 12px 12px;display:flex;flex-direction:column;justify-content:end;overflow:hidden;text-align:center;background:#241932}.doom-buggy span{font-size:.75rem;padding:1rem .4rem}.doom-buggy strong{background:#5d466d;padding:.4rem}.g35-clip-buttons{display:flex;flex-wrap:wrap;gap:.3rem}.g35-clip-buttons [aria-pressed=true]{outline:3px solid #ffdf9b;background:#69476c}.g35-panel fieldset{border:1px solid #9d7db4;border-radius:10px;margin:1rem 0;padding:.7rem}.g35-panel legend{font-weight:800;color:#ffdf9b}.g35-vote{display:inline-flex;gap:.3rem;padding:.5rem;align-items:center}.g35-panel textarea{display:block;width:100%;font:inherit;padding:.7rem;margin:.5rem 0;border-radius:8px}.g35-panel input[type=number]{font:inherit;width:5rem;padding:.4rem;margin:.4rem}.g35-monster{min-height:210px!important;width:165px}.g35-monster .g35-rhythm{width:135px}.g35-monster .g35-rhythm svg{height:75px}.g35-monster .monster-face{font-size:3rem}.bat-round{font-size:1.3rem;font-weight:900;color:#ffdf9b}
 @media(max-width:600px){.g35-panel{padding:.7rem}.g35-monster{width:135px;padding:.4rem!important}.g35-monster .g35-rhythm{width:110px}.doom-buggy span{font-size:.65rem}.doom-buggies{gap:.3rem}.g35-review-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.g35-monster{min-height:185px!important}.g35-monster .monster-face{font-size:2rem}.g35-monster .g35-rhythm{z-index:1}
+.boom-rule{font-size:1.6rem;font-weight:900;color:#ffdf9b}.boom-reminder{border:4px solid #ffce7a;text-align:center}.boom-reminder .action{font-size:1.15rem}
+.detective-steps{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}.detective-steps [aria-pressed=true]{outline:3px solid #ffdf9b;background:#69476c}.detective-lab h4{font-size:1.25rem;color:#ffdf9b}.detective-lab select{font:inherit;padding:.6rem;margin:.4rem;border-radius:8px;max-width:100%;background:#fff6e4;color:#241632}.detective-lab label{display:block;margin:.8rem 0}.detective-beats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem}.detective-beats label{text-align:center;border:2px solid #b48bc6;border-radius:12px;padding:.5rem}.detective-beats select{display:block;width:100%;margin:.4rem 0}.detective-evidence{padding:1rem;border-left:4px solid #ffdf9b;background:#3b2c50}
+@media(max-width:600px){.detective-beats{grid-template-columns:repeat(2,minmax(0,1fr))}.g35-monster{width:135px}}
 
 </style>
 </head>
@@ -191,6 +213,7 @@ footer strong {color:#ffcd71}
 <footer><strong>K–5 classroom test build · choose any house in any order.</strong> Made for classroom music • Videos require school-network access • Teacher controls the activity</footer>
 <script>
 window.MUSIC_STREET_ROSTERS = {"2-1":["Danielle B.","Ashton B.","Aiden B.","Samuel C.","Emerson D.","Mila E.","Holley F.","Kinsley G.","Seilah H.","Landen H.","Kalani J.","Donald K.","Jonael L.","Mateo M.","Ava M.","Adonai M.","Delaney M.","Donette O.","Kattleya P.","Neylene R.","Zariah R.","Chesia R.","Darren S.","Leilani V.","Kayleigh V.","Madison V.","Ethan W.","Ntumba W.","Soren Z."],"3-1":["Gabriel A.","Mateo A.","Aron A.","Isabella B.","Temuge B.","Oliver B.","Nia B.","Yoselyn C.","Lucia F.","Jubilee G.","Azeilah H.","Neahni J.","Connor J.","Kennedy K.","Noah L.","Jaylene M.","Cecilia M.","Isaac M.","Carly N.","Alvin O.","Aspen P.","Lincoln P.","Sebastian R.","Axel R.","Victoria R.","Aylin R.","Jeremiah R.","Evelyn S.","Toby V."],"4-1":["Lordina A.","Katreen Anne A.","Jacob A.","Prince A.","Harper B.","Alexander C.","Kennedy D.","Aubrianna G.","Maddox G.","Genesis G.","Sebastian H.","Dante J.","Eliza J.","Esme J.","Michellyn K.","Annalisa K.","Alexa M.","Laila M.","J'aime-Lynn M.","Amari N.","James Wayne N.","Emmalyn R.","Liam R.","Zoey S.","Jonathan S.","Spencer S.","Hahani S.","Jovani S.","Presley S.","Charlie V."],"5-0":["Soren B.","Reece E.","Victoria E.","Isaac G.","Raoul G.","Alexa H.","Ferryn J.","Nahari J.","Alina L.","Harlee M.","Avi M.","Gabriel M.","Kevin M.","Dhanvant N.","Sainsanaa N.","Aubrey O.","Skyler O.","Izak P.","Mia R.","Derrick R.","AnaLee S.","Eloise S.","Nathan T."],"4-0":["Antonio A.","Ezra C.","Geradine D.","Sana D.","Olivia D.","Harley D.","Galilea G.","Michael H.","Jordan K.","Julian M.","Jeronimo M.","Juliette M.","Esther N.","Lina P.","Charlie P.","Autumn Q.","Harmony R.","Eizabella R.","Maverick S.","Jaysareen T.","Patricio V.","Fernanda V.","Joel Y."],"3-0":["Zion B.","Mia B.","Axel C.","Victor E.","Stephany E.","Mia G.","William G.","Rey G.","Mateo G.","Kevin G.","Axel G.","Alifair H.","Harper H.","Grace K.","Damian M.","Kaylin N.","Quinn O.","Eden-Joy S.","Finnegan S.","Jayda T.","Justin V.","Randall W.","Josiah W.","Leighton W.","Nella Y."],"2-2":["Adam A.","Luis A.","Gina B.","Aileen C.","Eric E.","Bailey F.","David G.","Astrid G.","Maya H.","Kayden H.","Torben J.","Jarden K.","Henry K.","Sebastian M.","Kennedy M.","Brecken N.","Quan P.","J S.","Jayden V.","Jesus V.","Renzo Emlyn W.","Siena Z."],"4-2":["Nebi A.","Clary A.","Simbiat A.","Kaylee B.","Preston C.","Esme C.","Roman C.","Demetri F.","Mia F.","Cayden H.","Victoria H.","King-Giovanni J.","Ryker L.","Mayabella L.","Ivan M.","Isaiah M.","Sarah N.","Isaac P.","Haylee R.","Joseth R.","Jurdaine S.","Maafi W.","Heela Z."],"3-2":["Ashley A.","Tenuun B.","Carla C.","Francisco D.","Jazmin D.","Diego D.","Leilani E.","Blaikley G.","Sabik G.","Philomena I.","Titan J.","Savannah J.","Jardim K.","Jeremiah L.","Nael M.","Matthew O.","Hayden P.","Matias P.","Arianna P.","Devin S.","Aiden T.","Viviana V.","Mannie W."],"5-2":["Zyla A.","Roman B.","Giselle B.","Ja'layah B.","Jason C.","Zayn C.","Alyssa G.","Owen G.","Cody G.","Lia M.","Mathias M.","Maya M.","Gianni M.","Ry'ley M.","Kingston N.","Kawser O.","Erick P.","Elias R.","Harlow R.","Milana R.","Vandele S.","Adalyn T.","Viviana V."],"2-3":["Alizia A.","Jackson B.","Paul B.","Sophia B.","Kayenat D.","Alina G.","Vanellope H.","Emarie I.","Jacob J.","Ahdonias K.","Jazlyn L.","Jarilex M.","Levi M.","Collin M.","Elijah R.","Jakorian R.","Jack S.","Masina S.","Ashlynn S.","Noah T.","Kyrie T.","Jocelyn V.","Daniel V.","Beckett W."],"5-3":["Emrys A.","Jared A.","James A.","Aron B.","Olivia B.","Ailani C.","Addison C.","Isley C.","Mayla C.","G'Prince G.","Lumiere L.","Lilliana L.","Myles M.","Ramazani M.","Landon R.","Liam R.","Juaquin R.","Dominik S.","Adelyn S.","Naod T.","Leilany V.","Aytana V.","Fasika W.","Aurora Y."],"4-3":["Olivia B.","David B.","Lucy C.","Oliver D.","Mohammad D.","Uriel G.","Allison G.","Charli H.","Maya H.","Easton H.","Joselyn H.","Subarna K.","Leeann K.","Jacky L.","Zaiden L.","Mia M.","Lluvia P.","Jimena R.","Madeline R.","Andrew R.","Joseph S.","Anees S.","Ava S.","Ayana T.","Arlet V."],"3-3":["Amir A.","Mario A.","Emiliano A.","Jeisen A.","Emberly B.","Daniel C.","Wes C.","Jay C.","Juan Cebastian D.","Amora D.","Nolan G.","Ariyahna G.","Camden K.","Adrian M.","Lorenzo M.","Elina O.","Henry P.","Dayana P.","Emerie Q.","Jenesis R.","Raegan S.","Aynoa V.","Tydin V.","Eizabella V.","Dominic W.","Elias X."],"2-4":["Noah A.","Jaxson B.","Sonny B.","Cristiano F.","Marjan J.","Beatrix J.","Nabiyah J.","Amanda J.","Eli J.","Odin K.","Micah M.","Briella M.","Nazrawi M.","Romeo N.","Cooper P.","Jaythan R.","Emily R.","Alex R.","Haajirah S.","Nathan V.","Holly W."],"5-4":["Emily A.","Rashad A.","Severianna C.","Oliver C.","Miguel C.","London E.","James F.","Lorenzo G.","Myah G.","Promyse H.","Kailani H.","Jeremiah J.","Olivia L.","Aurora M.","Francisco S.","Rosalie S.","Emmanuel V.","Elian V.","Elijah V.","Jalen W.","Ximena Y.","Isabella Z."],"4-4":["Nylia A.","Ian A.","Harry B.","Aliyah B.","Dante C.","Miguel G.","Xander G.","Izaiah G.","Jesse H.","Payshence H.","Yohana H.","Lyric J.","Matteo L.","Joseph M.","Ryder M.","Maren M.","Axel M.","Skye P.","Kira R.","Areli S.","Corinna S.","Legend W."],"3-4":["Endrik A.","Braxtyn B.","Alivia B.","Danneth B.","Scarlett D.","Helen I.","Arius K.","Jesiah L.","Temperance M.","Lyric Arlene M.","Mateo M.","Saraey P.","Adriel R.","Christopher R.","Ariana R.","Matthew R.","Kenai S.","Griffin S.","Alaysia S.","Jersey T.","Jada W.","Muzamil Z."],"2-5":["Moiz A.","River B.","Yishak B.","Trey B.","Xenai B.","Sekani B.","Kaia B.","Thaddeus C.","Dariel C.","Aiden G.","Samisha G.","Bruno H.","Ellanie H.","Ellie J.","Kamri K.","Esteban M.","Tanner P.","Aaron S.","Ezra S.","Thiago U.","Legacy W."],"5-5":["Scarlett C.","Dahirou D.","Jacob D.","Alexander F.","Itzayana G.","Miguel G.","Ayan G.","Olivia H.","Lainey I.","Amyr J.","Jezleen M.","Maximus M.","Zoey M.","Izzariah R.","Omar S.","Duncan S.","Averyella S.","Adelyn T.","Bitaniya T.","Tulsi V.","Jaelee V."],"4-5":["Eyasu B.","Samantha C.","Yamilet C.","Kamas D.","Noman D.","Bentley F.","Jaydon G.","Sergio G.","Kai H.","Lettie J.","Emilia L.","Aylanni M.","Gunnar M.","Natalia M.","Dareli M.","Kinlee N.","Thalia O.","Alexander R.","Matteo R.","Erik S.","Donovan V."],"3-5":["Lincoln B.","Dallin C.","Tobias D.","Ezerriah G.","Anastasia G.","Lorenzo H.","Evelyn H.","Ethan J.","Ahmoni J.","Kate K.","Eli M.","Krista M.","Ariunsanaa N.","Analiyah O.","Alaia P.","Mateo P.","Roman R.","Monroe S.","WestLynn S.","Adonis T.","Zachary V."]};
+
 </script><script>
 const K2_PLAN = [
   {
@@ -255,7 +278,7 @@ const K2_PLAN = [
   },
   {
     "title": "Little Ghost",
-    "duration": "4–6 minutes",
+    "duration": "6–8 minutes; repeat two or three times",
     "youtubeId": "WjIX1NDswhA",
     "intention": "We are learning to express music through flowing movements and respond to musical cues.",
     "criteria": [
@@ -264,23 +287,23 @@ const K2_PLAN = [
       "I can toss my scarf safely into the air."
     ],
     "materials": "One movement scarf per student.",
-    "directions": "Stand on your numbered dot. Make your scarf float and swirl like a friendly ghost while following the recording. At the end, gently toss it straight up. Never throw it toward a classmate.",
-    "guide": "Distribute one scarf per student. Have students stand on their dots and follow the recording. Finish with a gentle upward toss and collect scarves before moving on.",
+    "directions": "Find a rainbow dot and give your scarf room to float and swirl like a friendly ghost. Follow the recording, then gently toss the scarf straight up. Never throw toward a classmate. Enjoy the activity two or three times.",
+    "guide": "Distribute one scarf per student and have students choose a RAINBOW dot, not a numbered dot. Follow the recording with floating scarf movements. Repeat two or three times as time allows. Finish with a gentle upward toss; collect scarves before moving on.",
     "compact": false
   },
   {
     "title": "The Little Old Lady Who Was Not Afraid of Anything — Sound Orchestra",
     "duration": "8–10 minutes",
-    "youtubeId": "",
+    "youtubeId": "2jaEAVxl5Rk",
     "intention": "We are learning how different instrumental timbres can represent actions and characters in a story.",
     "criteria": [
       "I can recognize the sound my instrument represents.",
       "I can perform at the correct moment in the story.",
       "I can use body movements to represent the story when I’m not playing an instrument."
     ],
-    "materials": "A physical copy of the book; hand drum, egg shaker, tambourine, castanets, and woodblock or agogo.",
-    "directions": "Five instrumentalists play when their story items appear in the read-aloud. Everyone else joins with the matching body movement. For the pumpkin head, everyone says “BOO, BOO!” There is no sixth instrument role.",
-    "guide": "Prepare the five instruments and a physical copy of the book. Use the picker to assign five students. Explain each story sound and instrument. Read aloud, cueing the instrumentalists at their items. Everyone else performs the matching movement; everyone says “BOO, BOO!” for the pumpkin head. No video is assigned.",
+    "materials": "Hand drum, egg shaker, tambourine, castanets, and woodblock or agogo. A physical copy of the book is an optional fallback.",
+    "directions": "Choose five instrumentalists, then watch the story read-aloud. Play your assigned sound when your story item appears. Everyone else performs the body movements. Everyone says “BOO, BOO!” for the pumpkin head.",
+    "guide": "Prepare the five instruments and use the shared picker to assign players. Rehearse the instrument sounds and body movements shown on the cards. Play the selected story video, pausing to cue the sounds as needed. Everyone says “BOO, BOO!” for the pumpkin head; it is not a sixth instrument. If the video is blocked, read from a physical copy.",
     "compact": false
   },
   {
@@ -311,7 +334,7 @@ const K2_PLAN = [
     ],
     "materials": "",
     "directions": "Say the candy name and clap its spoken syllables together. Tap the monster that matches the number of claps. Keep trying if a monster spits it back! These are spoken syllables, not musical beats.",
-    "guide": "Display each candy. Have students say its name naturally and clap each syllable. Tap the matching monster head. Finish with the four-syllable Butterfinger surprise: BUT – TER – FIN – GER. None of the first three monsters can eat it.",
+    "guide": "Display each candy. Have students say its name naturally and clap each syllable. Tap the matching monster head. Finish with the four-syllable Butterfinger surprise: BUT – TER – FIN – GER. None of the first three monsters can eat it. After a correct match, the next candy arrives automatically. Incorrect answers stay for a retry.",
     "compact": false
   },
   {
@@ -349,7 +372,7 @@ const K2_PLAN = [
 ];
 
 </script><script>
-/* Teacher-local rosters: browser storage only; no included names and no roster network calls. */
+/* Teacher-supplied class rosters load automatically, as requested. */
 const K2Features = (() => {
   const classes = new Map(), candyStates = new Map();
   let timers = new Set(), activeViews = new Set(), resetMeter = () => {};
@@ -358,14 +381,14 @@ const K2Features = (() => {
   const later = (fn, ms) => { const t = setTimeout(() => { timers.delete(t); fn(); }, ms); timers.add(t); return t; };
   function cleanup() { timers.forEach(clearTimeout); timers.clear(); activeViews.clear(); resetMeter(); resetMeter = () => {}; }
   const protectedRosters = window.MUSIC_STREET_ROSTERS || {};
-  const vaultReady = true;
-  const vaultMessage = 'Class rosters are loaded automatically.';
   const sessionKey = id => 'music-street-private-picks-' + new Intl.DateTimeFormat('en-CA', {timeZone:'America/Denver',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()) + '-' + id;
   function saveSelections(id) { const state=classes.get(id);if(!state)return;try { sessionStorage.setItem(sessionKey(id),JSON.stringify({used:[...state.used],slots:state.slots})); } catch {} }
   function classState(id) {
+    const today=sessionKey(id);
+    if (classes.has(id) && classes.get(id).session!==today) classes.delete(id);
     if (!classes.has(id)) {
       const stored=protectedRosters[id];const names=Array.isArray(stored)?parseRoster(stored.filter(n=>typeof n==='string').join('\n')):[];
-      const state={names,used:new Set(),slots:{}};
+      const state={names,used:new Set(),slots:{},session:today};
       try { const saved=JSON.parse(sessionStorage.getItem(sessionKey(id))||'{}');if(Array.isArray(saved.used))state.used=new Set(saved.used.filter(n=>names.includes(n)));if(saved.slots&&typeof saved.slots==='object') { for(const house of [3,5,8])if(Array.isArray(saved.slots[house]))state.slots[house]=saved.slots[house].map(n=>state.used.has(n)?n:null); } } catch {}
       classes.set(id,state);
     }
@@ -404,13 +427,13 @@ const K2Features = (() => {
     5: [['👞','Shoes','Hand drum · CLOMP, CLOMP · stomp twice'],['👖','Pants','Egg shaker · WIGGLE, WIGGLE · wiggle hips'],['👕','Shirt','Tambourine · SHAKE, SHAKE · shake shoulders'],['🧤','Gloves','Castanets · CLAP, CLAP · clap twice'],['🎩','Hat','Woodblock or agogo · NOD, NOD · nod head twice']],
     8: Array.from({length:4}, (_,i) => ['🦇',`Bat Leader ${i+1}`,i===3?'Optional fourth leader':'Clap, pat, or stomp a short pattern'])
   };
-  function renderPicker(parent, c, house) {
+  function renderPicker(parent, c, house, options = {}) {
     const box = make('section', '', `k2-feature picker-house-${house}`), grid = make('div', '', 'picker-grid');
-    box.append(make('h3', house===3?'🎃 Pick five pumpkin performers':house===5?'📖 Pick five instrumentalists':'🦇 Pick three or four Bat Leaders'));
-    const help = make('p', 'The same no-repeat pool is shared across all three picker houses. An absent student stays ineligible when you reroll their role. Only an explicit teacher reset starts a new round.');
+    box.append(make('h3', options.title || (house===3?'🎃 Pick five pumpkin performers':house===5?'📖 Pick five instrumentalists':'🦇 Pick three or four Bat Leaders')));
+    const help = make('p', options.help || 'The same no-repeat pool is shared across this class’s picker houses. An absent student stays ineligible when you reroll their role. Only an explicit teacher reset starts a new round.');
     const count = make('p'); count.setAttribute('role','status'); box.append(help,count);
     let busy = 0;
-    const cards = roles[house].map((role, index) => {
+    const cards = (options.roles || roles[house]).map((role, index) => {
       const card = make('article', '', 'picker-card'); card.append(make('div', role[0], 'role-art'),make('h4',role[1]),make('p',role[2]));
       const name = make('p', '', 'student-result'); name.setAttribute('role','status');
       const roll = action('Choose student', () => pick(index)); card.append(name, roll); grid.append(card); return {card,name,roll,animating:false};
@@ -418,7 +441,7 @@ const K2Features = (() => {
     function slots() { const s=classState(c.id); s.slots[house] ||= []; return s.slots[house]; }
     function refresh() {
       const state = classState(c.id), remaining=state.names.filter(n=>!state.used.has(n)).length;
-      count.textContent = !state.names.length ? 'No roster found for this class. Invite volunteers or add the missing class roster.' : `${remaining} of ${state.names.length} students eligible. ${remaining===0?'Everyone has been selected; reset eligibility only when ready.':''}`;
+      count.textContent = !state.names.length ? 'No roster found for this class. Invite volunteers; the activity still works.' : `${remaining} of ${state.names.length} students eligible. ${remaining===0?'Everyone has been selected; reset eligibility only when ready.':''}`;
       cards.forEach((v,i)=>{if(v.animating)return;v.name.textContent=slots()[i]||'Not picked yet'; v.roll.textContent=slots()[i]?'Absent? Reroll this role':'Choose student'; v.roll.disabled=remaining===0||busy>0;});
       all.disabled=remaining===0||busy>0||cards.every((_,i)=>slots()[i]);
     }
@@ -438,8 +461,8 @@ const K2Features = (() => {
       }
       refresh(); animate();
     }
-    const all=action('Choose all unfilled roles',()=>{if(busy)return;cards.forEach((_,i)=>{if(!slots()[i])pick(i,true);});});
-    box.append(all,grid,action('Reset shared eligibility for this class',()=>{if(busy)return;if(confirm('Start a new round in Pumpkin Patch, Storybook Cottage, and Bat Cave? Everyone becomes eligible again.'))resetClass(c.id);}));
+    const all=action(options.allLabel || 'Choose all unfilled roles',()=>{if(busy)return;cards.forEach((_,i)=>{if(!slots()[i])pick(i,true);});});
+    box.append(all,grid,action('Reset shared eligibility for this class',()=>{if(busy)return;if(confirm('Reset selection eligibility across this class’s picker houses? Everyone becomes eligible again.'))resetClass(c.id);}));
     activeViews.add(refresh); refresh(); parent.append(box);
   }
   // Original text-based wrapper illustrations, not copied candy-company images.
@@ -457,22 +480,22 @@ const K2Features = (() => {
     const current=()=>state.index<regularCandies.length?regularCandies[state.index]:['Butterfinger','BUTTERFINGER','BUT · TER · FIN · GER',4];
     function update(){const done=state.index>regularCandies.length; progress.textContent=done?'All candies sorted!':state.index===regularCandies.length?'The trick candy!':`Candy ${state.index+1} of ${regularCandies.length}`;
       const candy=current(); wrapper.textContent=done?'★':candy[1];word.textContent=done?'You solved the candy trick!':candy[0];
-      wrapper.className='candy-wrapper wrapper-'+(state.index%4); next.hidden=true;
+      wrapper.className='candy-wrapper candy-enter wrapper-'+(state.index%4);
       buckets.querySelectorAll('button').forEach(b=>{b.disabled=done;b.classList.remove('chomp','spit');});
     }
     function feed(count,head){if(busy||state.index>regularCandies.length)return;
-      const candy=current();busy=true;head.classList.add(candy[3]===count?'chomp':'spit');
+      const candy=current();busy=true;buckets.querySelectorAll('button').forEach(b=>b.disabled=true);head.classList.add(candy[3]===count?'chomp':'spit');
       if(candy[3]!==count){feedback.textContent=state.index===regularCandies.length?'BUT · TER · FIN · GER — four claps! These three monsters cannot eat it. A surprise is coming…':`Try again: ${candy[2]}. Clap each spoken part.`;
-        wrapper.classList.add('rejected');later(()=>{head.classList.remove('spit');wrapper.classList.remove('rejected');busy=false;if(state.index===regularCandies.length)revealFourth();},650);return;}
+        wrapper.classList.add('rejected');later(()=>{head.classList.remove('spit');wrapper.classList.remove('rejected');busy=false;buckets.querySelectorAll('button').forEach(b=>b.disabled=false);if(state.index===regularCandies.length)revealFourth();},650);return;}
       wrapper.classList.add('eaten');beep(600,.15);feedback.textContent=`Chomp! ${candy[2]} — ${count} ${count===1?'clap':'claps'}!`;
-      later(()=>{busy=false;state.index++;if(count===4){update();feedback.textContent='The surprise fourth monster ate Butterfinger! Four spoken syllables: BUT · TER · FIN · GER.';}else{next.hidden=false;buckets.querySelectorAll('button').forEach(b=>b.disabled=true);}},700);
+      state.index++; // Commit now so leaving during the celebration preserves the correct answer.
+      later(()=>{busy=false;update();feedback.textContent=count===4?'The surprise fourth monster ate Butterfinger! Four spoken syllables: BUT · TER · FIN · GER.':state.index===regularCandies.length?'Butterfinger! Say and clap it. Can one of these monsters eat it?':'The next candy is here! Say its name and clap the syllables.';},1200);
     }
-    function addHead(n){const head=action('',()=>feed(n,head));head.className='action monster-head monster-'+n;head.append(make('span',['👹','👾','👻','🐲'][n-1],'monster-face'),make('span',`${n} ${n===1?'CLAP':'CLAPS'}`));head.setAttribute('aria-label',`${n} ${n===1?'clap':'claps'}`);buckets.append(head);}
+    function addHead(n){const head=action('',()=>feed(n,head));head.className='action monster-head monster-'+n;head.append(make('span','','bucket-mouth'),make('span',['👹','👾','👻','🐲'][n-1],'monster-face'),make('span',`${n} ${n===1?'CLAP':'CLAPS'}`));head.setAttribute('aria-label',`${n} ${n===1?'clap':'claps'}`);buckets.append(head);}
     for(let i=1;i<=3;i++)addHead(i);
     function revealFourth(){if(surprise)return;surprise=true;addHead(4);feedback.textContent='Surprise! A FOUR-clap monster appeared. Tap it to feed Butterfinger.';}
-    const next=action('Next candy →',()=>{update();feedback.textContent=state.index===regularCandies.length?'Butterfinger! Say and clap it. Can one of these monsters eat it?':'Say the candy name and clap its spoken syllables.';});
     const restart=action('Restart candy game',()=>{if(busy)return;state.index=0;surprise=false;buckets.querySelector('.monster-4')?.remove();update();feedback.textContent='Say the candy name naturally and clap its syllables.';});
-    box.append(progress,belt,word,buckets,feedback,next,restart,make('p','Original wrapper illustrations for classroom word play. No candy-company sponsorship.','fine-print'));
+    box.append(progress,belt,word,buckets,feedback,restart,make('p','Original wrapper illustrations for classroom word play. No candy-company sponsorship.','fine-print'));
     update();parent.append(box);
   }
   function renderSpeedMeter(parent) {
@@ -502,13 +525,13 @@ const K2Features = (() => {
     const learning=make('details','','sub-guide');learning.append(make('summary','Our musical learning'),make('p',a.intention));const ul=make('ul');a.criteria.forEach(s=>ul.append(make('li',s)));learning.append(ul);body.append(learning);
     if(house===2)renderSpeedMeter(body);
     if([3,5,8].includes(house))renderPicker(body,c,house);
-    if(house===5){body.append(make('div','🎃 Pumpkin head: everyone says “BOO, BOO!” together. No instrument.','cue'),make('p','Read from the physical book. The website provides roles and sound cues, not the copyrighted story text.'));}
+    if(house===5){body.append(make('div','🎃 Pumpkin head: everyone says “BOO, BOO!” together. No instrument.','cue'),make('p','Watch the read-aloud below and play when your story item appears. Pause to cue instruments as needed. A physical book is the fallback if the video is blocked.'));}
     if(house===7)renderCandy(body,c,beep);
     renderVideo(body,a);
     if(house===8)body.append(make('div','After the video: “What is the returning sound called?” → “An echo!” Each leader performs a short pattern; the class listens, then echoes exactly. Optional: Group A echoes, then Group B echoes more softly.','cue'));
     const actions=make('div','','actions');actions.append(action('✓ Mark complete & return',complete),action('Return without completing',back));body.append(actions);
   }
-  return {installRosterControl,renderActivity,cleanup,parseRoster,drawName};
+  return {installRosterControl,renderActivity,cleanup,parseRoster,drawName,renderPicker};
 })();
 
 </script><script>
@@ -674,8 +697,8 @@ const G35_PLAN = [
       "I can tap twice and place both sticks on beat three.",
       "I can wait and receive safely during the alternating measure."
     ],
-    "directions": "Spread out in one large seated circle. Every other student begins with TWO bones. Tap the pair together on 1 and 2. On 3, place BOTH sticks in the next student’s empty space and release. The receiving students take the next measure.",
-    "guide": "Use the available floor space, not just the even-numbered dots. Make an even circle: an adult can join, or one student can conduct if the class is odd. Give two sticks to alternate students. Practice slowly without music: tap, tap, place both; then the other half of the circle takes a turn. Listen through the recording’s introduction and cue a clear 1–2–3 pulse when established. Keep sticks low, never throw, and pause whenever coordination or musical pulse becomes difficult. This recording is over seven minutes; the substitute should use only a short successful round and pause it. No need to finish the recording."
+    "directions": "Spread out in one comfortable seated circle. Every other student begins with TWO bones. Tap the pair together on 1 and 2. On 3, place BOTH sticks in the next student’s empty space and release. The receiving students take the next measure. Make the circle smaller when needed so pairs of sticks can be placed safely within reach.",
+    "guide": "Use the available floor space, not just the even-numbered dots. Make an even circle: an adult can join, or one student can conduct if the class is odd. Give two sticks to alternate students. Practice slowly without music: tap, tap, place both; then the other half of the circle takes a turn. Listen through the recording’s introduction and cue a clear 1–2–3 pulse when established. Keep sticks low, never throw, and pause whenever coordination or musical pulse becomes difficult. This recording is over seven minutes; the substitute should use only a short successful round and pause it. No need to finish the recording. The circle may be made smaller as needed; pause first, move safely, and check that every student can reach the next empty space. This is not an elimination game."
   },
   {
     "title": "Grim Grinning Ghosts: Escape the Haunted Mansion",
@@ -703,8 +726,8 @@ const G35_PLAN = [
       "I can stop at the song’s ending.",
       "I can follow the game rules and judge fairly."
     ],
-    "directions": "Pass ONE pumpkin gently around the circle while singing. Whoever holds it when the song ends is out and becomes a judge. Judges watch the next ending and check that everyone follows expectations. The teacher confirms calls.",
-    "guide": "This house has a seven-minute limit beginning with directions, not seven minutes of extra gameplay. Form a spaced circle and review gentle two-hand passing: no tossing or rolling. Play the lyric video; at each ending the holder sits out and becomes a judge, still singing and watching. Replay for another round. Judges watch who is holding the pumpkin and check expectations; the substitute has the final decision. At zero the player stops: collect the pumpkin and return to the street even if there is no winner. Revisiting does not restart the limit."
+    "directions": "Use the student picker to choose who starts with the pumpkin. Pass ONE pumpkin gently around the circle while singing. The holder at the song’s ending is out and becomes a judge. THROWING the pumpkin also means you are out. The teacher confirms calls. As students are eliminated, pause and make the circle smaller when needed.",
+    "guide": "This house has a seven-minute limit beginning with directions. Use the shared student picker to choose a starter fairly; reroll only if absent. Form a circle and review gentle two-hand passing. Throwing the pumpkin results in being out. At each song ending, the holder sits outside the circle and becomes a judge, still singing and watching. Pause between rounds to bring the remaining players closer into a smaller circle when needed. Keep a safe passing distance. Judges watch the next ending and expectations; the substitute confirms calls. At zero the player stops: collect the pumpkin and return to the street even without a winner. Revisiting does not restart the limit."
   },
   {
     "title": "Echoes from the Past",
@@ -746,8 +769,8 @@ const G35_PLAN = [
       "I can play at the right time and rest when my part is silent.",
       "I can handle and return my Boomwhacker safely."
     ],
-    "directions": "Follow your own note/color in the Ghostbusters play-along. Play only when your cue reaches the playing point, and listen to how the class’s parts fit together.",
-    "guide": "Teacher trial: preview the entire screen and check the required pitches against your Boomwhacker collection. B-flat appears, so a diatonic-only set may need adjustment before class. Distribute only suitable notes; have students identify their own color/letter before starting. Practice striking an approved surface or palm, never another person. Model waiting when a note is absent. Pause/replay a passage if needed. Collect every Boomwhacker before leaving."
+    "directions": "Before starting, agree: if you play your Boomwhacker before the video starts, you will put your instrument away. Once the video begins, follow only your own note/color and listen to the ensemble.",
+    "guide": "Read the pop-up expectation aloud BEFORE revealing the video: “If you play your Boomwhacker before the video starts, you will put your instrument away.” Acknowledge the reminder to reveal the player. Teacher trial: preview the entire screen and check the required pitches against your Boomwhacker collection. B-flat appears, so a diatonic-only set may need adjustment before class. Distribute only suitable notes; have students identify their own color/letter before starting. Practice striking an approved surface or palm, never another person. Model waiting when a note is absent. Pause/replay a passage if needed. Collect every Boomwhacker before leaving."
   },
   {
     "title": "The Great Candy Rhythm Match!",
@@ -760,8 +783,8 @@ const G35_PLAN = [
       "I can select its written rhythm.",
       "I can read the pattern again after a correct match."
     ],
-    "directions": "Say each candy name in its taught rhythm, clap it, then tap the monster with matching notation. The four rhythm monsters stay on screen for all 18 candies.",
-    "guide": "Before playing, use the rhythm-target review to model TA (quarter), ti-ti (paired eighths), ti-ti TA (paired eighths plus quarter), and tika-tika (four sixteenths). Syllable count alone does not determine note duration: this game uses the deliberate models shown in the guide. There are 18 shuffled candies, no combination rounds, and four fixed targets. Correct answers chomp; wrong answers spit the candy back for another try. Have the class perform each correct pattern before Next candy."
+    "directions": "Say each candy name in its taught rhythm, clap it, then tap the monster with matching notation. The four rhythm monsters stay on screen for all 18 candies. A correct match automatically brings in the next candy.",
+    "guide": "Before playing, use the rhythm-target review to model TA (quarter), ti-ti (paired eighths), ti-ti TA (paired eighths plus quarter), and tika-tika (four sixteenths). Syllable count alone does not determine note duration: this game uses the deliberate models shown in the guide. There are 18 shuffled candies, no combination rounds, and four fixed targets. Correct answers chomp; wrong answers spit the candy back for another try. Correct matches advance automatically after a short chomp celebration. Wrong matches stay for a retry. Model the rhythm before tapping."
   },
   {
     "title": "Echo, Echo! — Bat Cave Echo Game",
@@ -775,23 +798,23 @@ const G35_PLAN = [
       "I can wait, listen, and echo a short pattern accurately.",
       "I can follow the elimination rule and rejoin a new round."
     ],
-    "directions": "Watch the echolocation video, then become musical echoes. A leader performs a short clap, pat, or stomp pattern. Listen without joining in; echo only after the leader finishes. An inaccurate echo means you are out until the next round.",
-    "guide": "Play the same echolocation introduction as K–2. Explain that our musical echo game is an analogy, not literal echolocation. Model one short pattern, then choose volunteer student leaders and rotate them. Like a repeat-after-the-leader game, the class must reproduce the order and timing accurately. The substitute confirms who is out; out students sit safely and listen until the next round. Use short rounds so everyone can rejoin. For an older-class challenge, require matching loud/soft dynamics too. No “Bat says” keyword trick is added, and no automatic rhythm generator is used."
+    "directions": "Watch the echolocation video, then use the student picker to choose Bat Leaders. A leader performs a short clap, pat, or stomp pattern. Listen without joining in; echo only after the leader finishes. An inaccurate echo means you are out until the next round.",
+    "guide": "Play the same echolocation introduction as K–2. Explain that our musical echo game is an analogy, not literal echolocation. Model one short pattern, then use the shared no-repeat picker to choose three or four student leaders and rotate them. Pumpkin starters are excluded from the same class’s Bat Leader pool; reroll an absent student individually. Like a repeat-after-the-leader game, the class must reproduce the order and timing accurately. The substitute confirms who is out; out students sit safely and listen until the next round. Use short rounds so everyone can rejoin. For an older-class challenge, require matching loud/soft dynamics too. No “Bat says” keyword trick is added, and no automatic rhythm generator is used."
   },
   {
-    "title": "The Pink Panther — Black Cat Concert",
-    "duration": "4–5 minutes",
+    "title": "The Pink Panther — Musical Detective Lab",
+    "duration": "8–10 minutes, including listening, partner talk, and a creative response",
     "kind": "concert",
     "youtubeId": "oe_uqv5GNNw",
     "materials": "",
     "intention": "Identify instrumental timbre, steady pulse, dynamics, and articulation in an orchestral performance.",
     "criteria": [
-      "I can recognize the featured saxophone.",
-      "I can describe the steady pulse and changes in dynamics.",
-      "I can explain how the music creates a sneaky character."
+      "I can support an instrument or sound description with something I heard.",
+      "I can explain how dynamics, articulation, or the steady beat create a sneaky character.",
+      "I can create and perform a four-beat sound response with a partner."
     ],
-    "directions": "Enjoy The Pink Panther performed by the WDR Funkhausorchester. Listen for the featured saxophone and notice how the orchestra creates a sneaky character.",
-    "guide": "Play the selected orchestral performance. Ask students to identify the featured saxophone and two other instruments they hear. Find the steady pulse with a small silent motion. Discuss loud/soft contrasts and short/smooth sounds: what makes this music sound sneaky? Replay a short passage to support an observation. No instruments or worksheet are required."
+    "directions": "Become musical detectives: listen for clues in The Pink Panther, compare evidence with a partner, then create a four-beat “sneaky footsteps” response. Use the detective guide below the player.",
+    "guide": "Allow about one minute for the listening mission, three minutes for the performance, two minutes for partner discussion, and two to four minutes for creating/sharing. Before playing, choose a focus: instruments, dynamics (loud/soft), or articulation (short/smooth). During the performance, silently mark the steady pulse; listen for the featured saxophone and at least two other sounds. Afterward, partners complete “I heard… / It sounded sneaky because…” using musical evidence. Replay a short passage with YouTube controls if useful. Partners then create and quietly perform a four-beat sneaky-footsteps pattern using claps, pats, finger taps, and/or silence. Perform it once short and quiet, then once with a different musical choice. Invite two or three pairs to share and explain the effect. The on-screen guide supports whole-class responses, so paper and instruments are optional."
   }
 ];
 
@@ -850,7 +873,7 @@ const G35_ASSETS = {"escapePdf": "data:application/pdf;base64,JVBERi0xLjQKJZOMi5
 </script><script>
 const G35Activities = (() => {
   let timers=new Set(), intervals=new Set(), revision=0, activeNodes=new Set(), reviewContext;
-  const candyGames=new Map(), batGames=new Map(), pumpkinDeadlines=new Map();
+  const candyGames=new Map(), batGames=new Map(), pumpkinDeadlines=new Map(), concertResponses=new Map(), dialogs=new Set();
   const el=(tag,text='',cls='')=>{const n=document.createElement(tag);n.textContent=text;n.className=cls;return n;};
   const button=(text,fn)=>{const b=el('button',text,'action');b.type='button';b.onclick=fn;return b;};
   const later=(fn,ms)=>{const id=setTimeout(()=>{timers.delete(id);fn();},ms);timers.add(id);return id;};
@@ -858,7 +881,7 @@ const G35Activities = (() => {
   const day=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/Denver',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   const classKey=c=>day()+'-'+c.id;
   function stopSounds(){for(const n of activeNodes){try{n.stop();}catch{}}activeNodes.clear();}
-  function cleanup(){revision++;timers.forEach(clearTimeout);timers.clear();intervals.forEach(clearInterval);intervals.clear();stopSounds();}
+  function cleanup(){for(const d of dialogs){if(d.open)d.close();d.remove();}dialogs.clear();revision++;timers.forEach(clearTimeout);timers.clear();intervals.forEach(clearInterval);intervals.clear();stopSounds();}
   const noteNames={Q:'quarter note',E:'paired eighth notes',H:'half note',R:'quarter rest',S:'four sixteenth notes'};
   function rhythm(pattern,showSpeech=false){
     const widths={Q:44,E:62,H:44,R:44,S:94},w=pattern.reduce((sum,k)=>sum+widths[k],20);let x=10,parts=[];
@@ -888,7 +911,7 @@ const G35Activities = (() => {
     [['Q','Quarter note · 1 beat'],['E','Paired eighths · 1 beat'],['H','Half note · 2 beats']].forEach(([k,label])=>{const card=el('div','','g35-review-card');card.append(el('h4',label),rhythm([k],true),button('Hear '+noteNames[k],()=>reviewSound([k],options,status)));grid.append(card);});
     review.append(grid,status,el('p','Half note: one sustained sound over TWO beats. On rhythm sticks or claps, make one attack and wait through the second beat.'));parent.append(review);
   }
-  function bones(parent){const card=el('section','','g35-panel bones-pattern');card.append(el('h3','TAP · TAP · PASS BOTH'),el('p','1: tap the pair together.  2: tap again.  3: place BOTH sticks in the next student’s empty space and release.'),el('div','1　　 2　　 3','bones-count'),el('p','The students who received the pair perform the NEXT measure. Every other student begins with two bones; everyone else begins empty-handed. Keep the circle spread out.'));parent.append(card);}
+  function bones(parent){const card=el('section','','g35-panel bones-pattern');card.append(el('h3','TAP · TAP · PASS BOTH'),el('p','1: tap the pair together.  2: tap again.  3: place BOTH sticks in the next student’s empty space and release.'),el('div','1　　 2　　 3','bones-count'),el('p','The students who received the pair perform the NEXT measure. Every other student begins with two bones; everyone else begins empty-handed. Pause and make the circle smaller whenever needed for safe reaching. There is no elimination in this game.'));parent.append(card);}
   function mansion(parent){
     const card=el('section','','g35-panel');const logo=document.createElement('img');logo.src=G35_ASSETS.logo;logo.alt='The Haunted Mansion';logo.className='g35-mansion-logo';card.append(logo,el('h3','Your four-beat escape ticket'));
     const download=el('a','Download the half-sheet worksheet · two tickets per page','action primary');download.href=G35_ASSETS.escapePdf;download.download='Grim-Grinning-Ghosts-Escape-Ticket.pdf';card.append(download);
@@ -907,8 +930,8 @@ const G35Activities = (() => {
     function update(){const seconds=remaining();display.textContent=Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0');display.setAttribute('aria-label',seconds+' seconds left');panel.classList.toggle('timer-urgent',seconds<=60);
       if(seconds===0&&!finished){finished=true;player?.holder.remove();out.textContent='Time is up! Stop the game, collect the pumpkin, and return to the neighborhood—even if there is no winner.';if(options.isSoundEnabled())options.beep(440,.35);}
     }
-    update();if(remaining()>0){player=video(parent,G35_PLAN[3]);repeat(update,250);}else out.textContent='This class’s seven-minute Pumpkin Patch game has finished for today. Collect the prop and choose another house.';
-    panel.append(el('p','The holder at the song’s ending is out and becomes a judge. Judges watch the next ending and check expectations; the substitute confirms calls.'));
+    update();if(remaining()>0){K2Features.renderPicker(parent,c,3,{title:'🎃 Who starts with the pumpkin?',roles:[['🎃','Pumpkin starter','Begin the first round with the pumpkin']],allLabel:'Choose pumpkin starter',help:'A fair random start. This shares the class’s no-repeat pool with Bat Cave. If the starter is absent, reroll that role; prior selections stay ineligible.'});player=video(parent,G35_PLAN[3]);repeat(update,250);}else out.textContent='This class’s seven-minute Pumpkin Patch game has finished for today. Collect the prop and choose another house.';
+    panel.append(el('p','The holder at the song’s ending is out and becomes a judge. Throwing the pumpkin also means you are OUT. Pause between rounds and make the circle smaller as players are eliminated. Judges watch; the substitute confirms calls.'));
   }
   function ghosts(parent,c){
     const root=el('section','','g35-panel');root.append(el('h3','Five composers. Five listening investigations.'));
@@ -930,23 +953,50 @@ const G35Activities = (() => {
     const panel=el('section','','g35-panel candy-machine');panel.append(el('h3','Say it. Clap it. Match the notation.'));
     const practice=el('details','','sub-guide');practice.append(el('summary','Practice the four taught rhythms first'));const practiceGrid=el('div','','g35-review-grid');candyTargets.forEach(pattern=>practiceGrid.append(rhythm(pattern,true)));practice.append(practiceGrid,el('p','Model TA for Twix; ti-ti for Skittles; ti-ti TA for Candy Corn; tika-tika for Butterfinger. These are deliberate spoken models. Two syllables can have different musical durations in other contexts.'));panel.append(practice);
     const progress=el('p'),belt=el('div','','conveyor'),wrapper=el('div','','candy-wrapper');belt.append(wrapper);const word=el('h3'),heads=el('div','','monster-buckets'),feedback=el('p','Say and clap the candy in its taught rhythm.');feedback.setAttribute('role','status');
-    const next=button('Next candy →',()=>{state.index++;update();feedback.textContent='Say and clap the candy, then choose its notation.';}),headButtons=[];
-    function update(){const done=state.index>=state.order.length;progress.textContent=done?'All 18 candy rhythms matched!':`Candy ${state.index+1} of ${state.order.length}`;wrapper.textContent=done?'★':state.order[state.index][0].toUpperCase();wrapper.className='candy-wrapper wrapper-'+(state.index%4);word.textContent=done?'Perform your favorite candy rhythm together.':state.order[state.index][0];next.hidden=true;next.textContent=state.index===state.order.length-1?'Finish candy game':'Next candy →';headButtons.forEach(b=>{b.disabled=done;b.classList.remove('chomp','spit');});if(done)feedback.textContent='You matched all four rhythm types. Choose another house when ready.';}
-    function feed(i,b){if(busy||state.index>=state.order.length)return;busy=true;const correct=state.order[state.index][1]===i;b.classList.add(correct?'chomp':'spit');
-      if(correct){wrapper.classList.add('eaten');options.beep(660,.13);feedback.textContent='Chomp! Clap this rhythm together before moving on.';later(()=>{busy=false;headButtons.forEach(b=>b.disabled=true);next.hidden=false;if(state.index===state.order.length-1)next.textContent='Finish candy game';},650);}
-      else{wrapper.classList.add('rejected');feedback.textContent='Ptooey! Say the taught rhythm again and compare the notes. Try another monster.';later(()=>{busy=false;wrapper.classList.remove('rejected');b.classList.remove('spit');},650);}
+    const headButtons=[];
+    function update(){const done=state.index>=state.order.length;progress.textContent=done?'All 18 candy rhythms matched!':`Candy ${state.index+1} of ${state.order.length}`;wrapper.textContent=done?'★':state.order[state.index][0].toUpperCase();wrapper.className='candy-wrapper candy-enter wrapper-'+(state.index%4);word.textContent=done?'Perform your favorite candy rhythm together.':state.order[state.index][0];headButtons.forEach(b=>{b.disabled=done;b.classList.remove('chomp','spit');});if(done)feedback.textContent='You matched all four rhythm types. Choose another house when ready.';}
+    function feed(i,b){if(busy||state.index>=state.order.length)return;busy=true;headButtons.forEach(b=>b.disabled=true);const correct=state.order[state.index][1]===i;b.classList.add(correct?'chomp':'spit');
+      if(correct){wrapper.classList.add('eaten');options.beep(660,.13);feedback.textContent='Chomp! That is the matching rhythm.';state.index++;later(()=>{busy=false;update();if(state.index<state.order.length)feedback.textContent='The next candy is here! Say and clap its taught rhythm.';},1200);}
+      else{wrapper.classList.add('rejected');feedback.textContent='Ptooey! Say the taught rhythm again and compare the notes. Try another monster.';later(()=>{busy=false;headButtons.forEach(b=>b.disabled=false);wrapper.classList.remove('rejected');b.classList.remove('spit');},650);}
     }
-    candyTargets.forEach((pattern,i)=>{const b=button('',()=>feed(i,b));b.className='action monster-head monster-'+(i+1)+' g35-monster';b.setAttribute('aria-label','Feed rhythm '+(i+1)+': '+pattern.map(k=>noteNames[k]).join(', '));b.append(el('span',['👹','👾','👻','🐲'][i],'monster-face'),rhythm(pattern));headButtons.push(b);heads.append(b);});
+    candyTargets.forEach((pattern,i)=>{const b=button('',()=>feed(i,b));b.className='action monster-head monster-'+(i+1)+' g35-monster';b.setAttribute('aria-label','Feed rhythm '+(i+1)+': '+pattern.map(k=>noteNames[k]).join(', '));b.append(el('span','','bucket-mouth'),el('span',['👹','👾','👻','🐲'][i],'monster-face'),rhythm(pattern));headButtons.push(b);heads.append(b);});
     const restart=button('Shuffle and play again',()=>{if(busy)return;if(confirm('Restart the 18-candy game for this class?')){state.order=shuffle(candyBank);state.index=0;update();feedback.textContent='A new shuffle. Say and clap the taught rhythm.';}});
-    panel.append(progress,belt,word,heads,feedback,next,restart,el('p','Original wrapper illustrations for classroom rhythm practice. No candy-company sponsorship.','fine-print'));parent.append(panel);update();
+    panel.append(progress,belt,word,heads,feedback,restart,el('p','Original wrapper illustrations for classroom rhythm practice. No candy-company sponsorship.','fine-print'));parent.append(panel);update();
   }
   function bat(parent,c){
+    K2Features.renderPicker(parent,c,8,{title:'🦇 Choose three or four Bat Leaders',help:'Bat Leaders and Pumpkin starters share the same no-repeat pool for this class. Choose all unfilled roles, or pick a single leader. Reroll a student who is absent without repeating prior selections.'});
     const key=classKey(c);if(!batGames.has(key))batGames.set(key,{round:1,leader:1,start:null,left:null});const state=batGames.get(key),panel=el('section','','g35-panel');
     panel.append(el('h3','Now become musical echoes'),el('p','Leader performs → class listens → class echoes. Inaccurate echo? You are out until the next round. The substitute confirms calls.'));
     const status=el('p','','bat-round');status.setAttribute('role','status');const draw=()=>{status.textContent=`Round ${state.round} · Leader turn ${state.leader}`+(state.left!==null?` · ${state.left} players still in`:'');};panel.append(status);
     const label=el('label','Optional: number of players starting this round '),count=document.createElement('input');count.type='number';count.min='1';count.max='60';count.value=state.start||'';count.setAttribute('aria-label','Players starting this round');label.append(count);panel.append(label);
     const mark=button('One player out',()=>{if(state.left===null||state.left<=0)return;state.left--;draw();});
-    panel.append(button('Set player count',()=>{const value=Number(count.value);if(Number.isInteger(value)&&value>=1&&value<=60){state.start=value;state.left=value;draw();}}),mark,button('Next volunteer leader',()=>{state.leader++;draw();}),button('New round — everyone rejoins',()=>{state.round++;state.leader=1;state.left=state.start;draw();}),el('p','Short patterns work best: choose claps, pats, or stomps. Out students sit safely and keep listening. Rotate volunteer leaders. Optional challenge: echo the dynamics too.','fine-print'));parent.append(panel);draw();
+    panel.append(button('Set player count',()=>{const value=Number(count.value);if(Number.isInteger(value)&&value>=1&&value<=60){state.start=value;state.left=value;draw();}}),mark,button('Next selected leader',()=>{state.leader++;draw();}),button('New round — everyone rejoins',()=>{state.round++;state.leader=1;state.left=state.start;draw();}),el('p','Short patterns work best: choose claps, pats, or stomps. Out students sit safely and keep listening. Rotate the selected leaders. Optional challenge: echo the dynamics too.','fine-print'));parent.append(panel);draw();
+  }
+  function boomwhackerReminder(parent,a){
+    const slot=el('div');parent.append(slot);
+    const notice=el('dialog','','teacher-roster boom-reminder');notice.setAttribute('aria-labelledby','boom-reminder-title');
+    const title=el('h2','Boomwhackers ready — and quiet!');title.id='boom-reminder-title';
+    notice.append(title,el('p','If you play your Boomwhacker before the video starts, you will have to put your instrument away.','boom-rule'),el('p','Hold your instrument quietly. Wait for the video to begin, then play only your own cues.'));
+    const ready=button('We’re ready — show the video',()=>{if(notice.open)notice.close();notice.remove();dialogs.delete(notice);video(slot,a);});notice.append(ready);slot.append(notice);dialogs.add(notice);
+    if(typeof notice.showModal==='function')notice.showModal();else notice.setAttribute('open','');
+  }
+  function concert(parent,c){
+    const key=classKey(c);if(!concertResponses.has(key))concertResponses.set(key,{step:0,focus:'Instruments',heard:'',because:'',pattern:['Tap','Rest','Pat','Tap']});
+    const state=concertResponses.get(key),panel=el('section','','g35-panel detective-lab');panel.append(el('h3','🐾 The Pink Panther: musical detective guide'));
+    const nav=el('div','','detective-steps'),content=el('div'),tabs=[];
+    const labels=['1 · Choose a mission','2 · Gather evidence','3 · Create a response','4 · Share your discovery'];
+    function field(labelText,key,placeholder){const label=el('label',labelText),entry=document.createElement('textarea');entry.rows=2;entry.value=state[key];entry.placeholder=placeholder;entry.oninput=()=>{state[key]=entry.value;};label.append(entry);content.append(label);}
+    function draw(){content.replaceChildren();tabs.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===state.step)));
+      if(state.step===0){content.append(el('h4','Before listening · about 1 minute'),el('p','Choose your detective mission. During the performance, silently tap a finger to the steady pulse. Listen for evidence you can describe afterward.'));
+        const label=el('label','Our listening focus '),select=document.createElement('select');select.setAttribute('aria-label','Listening focus');['Instruments','Dynamics · loud and soft','Articulation · short and smooth','Steady pulse'].forEach(t=>{const o=el('option',t);o.value=t;select.append(o);});select.value=state.focus;select.onchange=()=>{state.focus=select.value;};label.append(select);content.append(label,el('p','Instrument detectives: find the featured saxophone and two other sounds. Dynamics detectives: find a loud/soft contrast. Articulation detectives: compare short and smooth sounds. Pulse detectives: keep the beat even when the melody changes.'));}
+      if(state.step===1){content.append(el('h4','Listen, then talk with a partner · about 5 minutes'),el('p','Watch the three-minute performance above. Compare clues with a partner, then record or speak a shared class response. No student names needed.'));
+        field('I heard…','heard','Name an instrument, describe a sound, or identify a musical change.');field('It sounded sneaky because…','because','Use loud/soft, short/smooth, timbre, or beat as evidence.');content.append(el('p','Challenge: point to a moment you would replay to support your claim. Use the player controls to replay that short passage.'));}
+      if(state.step===2){content.append(el('h4','Create sneaky footsteps · about 2 minutes'),el('p','With a partner, choose one sound or silence for each beat. Practice an even four-beat pattern quietly. Perform it once short and quiet, then change ONE musical choice and perform it again.'));
+        const beats=el('div','','detective-beats');for(let i=0;i<4;i++){const label=el('label','Beat '+(i+1)),select=document.createElement('select');select.setAttribute('aria-label','Footstep sound for beat '+(i+1));['Tap','Pat','Clap','Rest'].forEach(t=>{const o=el('option',t);o.value=t;select.append(o);});select.value=state.pattern[i];select.onchange=()=>{state.pattern[i]=select.value;};label.append(select);beats.append(label);}content.append(beats,el('p','Try softer/louder or shorter/smoother sounds. Keep the same four steady beats. Which version best fits a sneaky cat, and why?'));}
+      if(state.step===3){content.append(el('h4','Share and explain · 1–2 minutes'),el('p','Invite two or three pairs to perform their four-beat response. Everyone else listens, then identifies the musical choice that changed.'),el('p','“We used '+state.pattern.join(' · ')+' for four beats. We changed ______. This created a ______ character because ______.”','detective-evidence'),el('p','Our evidence: '+(state.heard||'Describe one sound you heard.')+' '+(state.because||'Explain what made it sound sneaky.')),el('p','Exit response: name the featured instrument and explain one musical choice using evidence from the performance.'));}
+      if(state.step<3)content.append(button('Continue investigation →',()=>{state.step++;draw();}));
+    }
+    labels.forEach((label,i)=>{const b=button(label,()=>{state.step=i;draw();});tabs.push(b);nav.append(b);});panel.append(nav,content);parent.append(panel);draw();
   }
   function renderActivity(body,house,c,options){
     cleanup();body.replaceChildren();const a=G35_PLAN[house];if(!a){body.append(el('p','This activity is still being finalized.'));return;}
@@ -959,10 +1009,11 @@ const G35Activities = (() => {
     else if(a.kind==='ghost')ghosts(body,c);
     else if(a.kind==='storybook')StorybookSoundboard.render(body,options.isSoundEnabled);
     else if(a.kind==='candy')candy(body,c,options);
+    else if(a.kind==='boomwhackers')boomwhackerReminder(body,a);
     else if(a.youtubeId)video(body,a);
     if(a.kind==='mansion')mansion(body);
     if(a.kind==='bat')bat(body,c);
-    if(a.kind==='concert')body.append(el('section','Listen for the featured saxophone, the steady pulse underneath it, and changes in dynamics or articulation. What makes the melody sound sneaky? Name two other instruments you can hear.','g35-panel'));
+    if(a.kind==='concert')concert(body,c);
     const actions=el('div','','actions');actions.append(button('✓ Mark complete & return',options.onComplete),button('Return without completing',options.onBack));body.append(actions);
   }
   return {renderActivity,cleanup,stopSounds};
@@ -971,7 +1022,7 @@ const G35Activities = (() => {
 </script><script>
 const $=s=>document.querySelector(s);
 const street=$('#street'),activity=$('#activity'),houses=$('#houses'),welcome=$('#welcome'),classSelect=$('#classSelect');
-let sounds=true,active=0,step=0,audioContext,entered=false,selectedId='',manualOverride=false,lastClockMinute='';
+let sounds=true,active=0,step=0,audioContext,entered=false,selectedId='',manualOverride=false,lastClockMinute='',lastClockSample=null,navigationVersion=0;
 const ZONE='America/Denver';
 const TIMES=[['08:20','09:15',4],['09:20','10:15',5],['10:20','11:15',3],['12:25','13:20',2],['13:25','14:20',1],['14:30','15:25',0]];
 const TEACHERS={2:['Flex','Quilis','Wilmes','Robinson','Scholl','Buell'],3:['Armer','Roberts','Miller','Faubert-Gregory','Conkright','Horvath'],4:['Devincenzi','Passmore','Murray','Gliori','Cordes','Lemus'],5:['Meinenger','Fick','Humphries','Lachermeier','McCain','Perez']};
@@ -992,9 +1043,9 @@ function setVisited(a){try{localStorage.setItem(getKey(),JSON.stringify(a))}catc
 function beep(freq=420,dur=.13){if(!sounds)return;try{audioContext??=new (window.AudioContext||window.webkitAudioContext)();if(audioContext.state==='suspended')audioContext.resume();const o=audioContext.createOscillator(),g=audioContext.createGain();o.connect(g);g.connect(audioContext.destination);o.frequency.value=freq;g.gain.value=.045;o.start();o.stop(audioContext.currentTime+dur)}catch{}}
 function chime(urgent=false){[0,1,2].forEach((i)=>setTimeout(()=>beep((urgent?[660,550,440]:[440,550,660])[i],.24),i*330))}
 function populateClasses(){for(const day of [2,3,4,5]){const group=document.createElement('optgroup');group.label=DAYS[day];CLASSES.filter(c=>c.day===day).forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=`${pretty(c.start)} · ${classLabel(c)}`;group.append(o)});classSelect.append(group)}}
-function chooseClass(id,manual=false){G35Activities.cleanup();StorybookSoundboard.cleanup();K2Features.cleanup();selectedId=id;manualOverride=manual;classSelect.value=id;updateWelcome();if(entered){activity.hidden=true;street.hidden=false;draw()}}
+function chooseClass(id,manual=false){navigationVersion++;G35Activities.cleanup();StorybookSoundboard.cleanup();K2Features.cleanup();$('#activityBody').replaceChildren();selectedId=id;manualOverride=manual;classSelect.value=id;updateWelcome();if(entered){activity.hidden=true;street.hidden=false;draw()}}
 function updateWelcome(){const c=currentClass(),now=denverNow(),next=upcomingClass(now);$('#welcomeTitle').textContent=c?`Welcome, ${gradeName(c.grade)}!`:'Welcome to Music Street!';$('#welcomeClass').textContent=c?`${c.teacher}'s Class`:'Choose your class to begin';$('#welcomeTime').textContent=c?`${pretty(c.start)}–${pretty(c.end)}${c.grade===0?' · Gym dismissal at 3:15 PM':''}`:'';$('#enter').disabled=!c;$('#nextClass').textContent=next&&next.id!==selectedId?`Coming up: ${classLabel(next)} at ${pretty(next.start)}`:''}
-function showWelcome(){G35Activities.cleanup();StorybookSoundboard.cleanup();K2Features.cleanup();$('#activityBody').replaceChildren();entered=false;activity.hidden=true;street.hidden=true;welcome.hidden=false;updateWelcome();window.scrollTo(0,0)}
+function showWelcome(){document.querySelectorAll('dialog[open]').forEach(d=>d.close());navigationVersion++;enteringHouse=false;document.querySelectorAll('.house-portal').forEach(n=>n.remove());$('#alertOverlay').hidden=true;G35Activities.cleanup();StorybookSoundboard.cleanup();K2Features.cleanup();$('#activityBody').replaceChildren();entered=false;activity.hidden=true;street.hidden=true;welcome.hidden=false;updateWelcome();window.scrollTo(0,0)}
 function enterStreet(){if(!currentClass())return;entered=true;welcome.hidden=true;activity.hidden=true;street.hidden=false;draw();beep(520);setTimeout(()=>beep(690),140);window.scrollTo(0,0)}
 // Ten clickable hotspots aligned with the ten houses in the approved illustration.
 // Each hotspot covers one house; the original image remains untouched.
@@ -1015,6 +1066,7 @@ function draw(){
 }
 let enteringHouse=false;
 function portalTransition(button,done){
+  const version=navigationVersion;
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){enteringHouse=false;done();return}
   const rect=button.getBoundingClientRect();
   // The door sits near the lower center of each front-facing house.
@@ -1025,7 +1077,7 @@ function portalTransition(button,done){
   document.body.append(overlay);
   // Keep the existing magical spiral and stars, without animating the door.
   requestAnimationFrame(()=>overlay.classList.add('portal-grow'));
-  setTimeout(()=>{done();overlay.classList.add('portal-fade');},780);
+  setTimeout(()=>{if(version!==navigationVersion||!entered)return;done();overlay.classList.add('portal-fade');},780);
   setTimeout(()=>{overlay.remove();enteringHouse=false},1190);
 }
 
@@ -1049,13 +1101,26 @@ const storyCues=[['👞 Shoes','CLOMP CLOMP','Woodblocks'],['👖 Pants','WIGGLE
 function renderStory(p){p.append(el('h3','','Practice your story sounds'));storyCues.forEach(c=>p.append(el('div','cue',`${c[0]} — ${c[1]} (${c[2]})`)));p.append(el('p','','Assign groups before starting the read-aloud. Play only when your object appears.'))}
 function renderChoice(p){let box=el('div','actions'),out=el('p','');append(box,button('▶ High ghost',()=>{beep(800,.35);out.textContent='That was a HIGH sound!'}),button('▶ Low ghost',()=>{beep(220,.35);out.textContent='That was a LOW sound!'}));p.append(box,out)}
 function showAlert(type,c){const kindergarten=c.grade===0;$('#alertEmoji').textContent=type==='warning'?'⏳':kindergarten?'🎒':'🚪';$('#alertTitle').textContent=type==='warning'?'5 Minutes Left!':kindergarten?'Time to Head to the Gym!':'Time to Line Up!';$('#alertText').textContent=type==='warning'?'Our spooky adventure is almost over! Finish your activity and begin cleaning up your instruments and materials.':kindergarten?'Put everything away, line up quietly at the door, and get ready to walk to the gym for dismissal with the other specials classes.':'Put away your instruments, check your space, and quietly line up at the classroom door.';$('#alertOverlay').hidden=false;chime(type==='lineup')}
+// A scheduled start always welcomes the arriving class, including after a
+// manually selected class, while an activity is open, or after a sleeping tab wakes.
+function classStartingSince(now,previous){
+  if(!previous)return null;
+  if(previous.date!==now.date)return CLASSES.find(c=>c.day===now.day&&now.minute>=toMin(c.start)&&now.minute<toMin(c.end))||null;
+  if(now.minute<=previous.minute)return null;
+  return CLASSES.filter(c=>c.day===now.day&&toMin(c.start)>previous.minute&&toMin(c.start)<=now.minute&&toMin(c.end)>now.minute).at(-1)||null;
+}
 function clockTick(){const now=denverNow(),key=`${now.date}-${now.clock}`;if(key===lastClockMinute)return;lastClockMinute=key;
+const arriving=classStartingSince(now,lastClockSample);lastClockSample=now;
+if(arriving){chooseClass(arriving.id);showWelcome();return;}
 if(!manualOverride&&!entered){const c=suggestedClass(now);if((c?.id||'')!==selectedId)chooseClass(c?.id||'');else updateWelcome()}
 const c=currentClass();if(!c||!entered||c.day!==now.day)return;const lineAt=toMin(c.lineup||c.end)-(c.lineup?0:2);const warningAt=c.lineup?lineAt-5:toMin(c.end)-5;
 for(const [type,target] of [['warning',warningAt],['lineup',lineAt]]){const onceKey=`music-alert-${now.date}-${c.id}-${type}`;if(now.minute===target&&!sessionStorage.getItem(onceKey)){sessionStorage.setItem(onceKey,'1');showAlert(type,c)}}}
+
 classSelect.onchange=()=>{chooseClass(classSelect.value,true);showWelcome()};$('#welcomeButton').onclick=showWelcome;$('#enter').onclick=enterStreet;$('#back').onclick=goBack;$('#dismissAlert').onclick=()=>{$('#alertOverlay').hidden=true};$('#reset').onclick=()=>{if(!currentClass())return;if(confirm('Reset visited houses for this class today?')){setVisited([]);draw()}};$('#sound').onclick=()=>{sounds=!sounds;if(!sounds){StorybookSoundboard.stop();G35Activities.stopSounds();}$('#sound').textContent=sounds?'🔊 Sounds on':'🔇 Sounds off';$('#sound').setAttribute('aria-pressed',String(sounds));if(sounds)beep(540)};
 K2Features.installRosterControl(currentClass);
 populateClasses();chooseClass(suggestedClass(denverNow())?.id||'');showWelcome();clockTick();setInterval(clockTick,1000);
+
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)clockTick();});
 
 </script>
 <script>
